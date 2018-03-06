@@ -46,7 +46,7 @@ carousel.init(document.querySelector('.sky-carousel'), [
 });
 ```
 
-![scale模式](http://appff.meizu.com/front/example/carousel/images/scale-1.png)
+![scale模式](./src/images/scale.png)
 
 ### parallel模式
 ```js
@@ -69,7 +69,7 @@ carousel.init(document.querySelector('.sky-carousel'), [
 });
 ```
 
-![parallel模式](http://appff.meizu.com/front/example/carousel/images/parallel-1.png)
+![parallel模式](./src/images/parallel.png)
 
 ### parallel-simple模式
 ```js
