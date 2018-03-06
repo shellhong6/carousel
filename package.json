@@ -1,12 +1,16 @@
 {
-  "name": "carousel",
-  "version": "0.0.1",
-  "description": "移动端图片轮播组件",
+  "name": "@flyme/carousel",
+  "publishConfig": {
+    "registry": "http://appff.meizu.com:8888"
+  },
+  "version": "0.1.7",
+  "description": "图片轮播组件",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "rollup -c -w",
     "build": "rollup -c"
   },
-  "author": "shellhong6",
+  "author": "guangjie",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
