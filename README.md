@@ -4,10 +4,10 @@
 
 ## 支持四种模式
 
--* [base模式](http://blog.shellhong.com/effect/carousel/index-base.html)
--* [scale模式](http://blog.shellhong.com/effect/carousel/index-scale.html)
--* [parallel模式](http://blog.shellhong.com/effect/carousel/index-parallel.html)
--* [parallel-simple模式](http://blog.shellhong.com/effect/carousel/index-parallel-simple.html)
+* [base模式](http://blog.shellhong.com/effect/carousel/index-base.html)
+* [scale模式](http://blog.shellhong.com/effect/carousel/index-scale.html)
+* [parallel模式](http://blog.shellhong.com/effect/carousel/index-parallel.html)
+* [parallel-simple模式](http://blog.shellhong.com/effect/carousel/index-parallel-simple.html)
 
 ## 使用实例
 
@@ -95,4 +95,4 @@ carousel.init(document.querySelector('.sky-carousel'), [
 
 ##  相关的博客文章
 
--[点击阅读](http://blog.shellhong.com/export/views/work/carousel/index.html)
+[点击阅读](http://blog.shellhong.com/export/views/work/carousel/index.html)
