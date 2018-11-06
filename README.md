@@ -4,9 +4,9 @@
 
 ## 支持三种模式
 
-* [base模式](http://blog.shellhong.com/effect/carousel/BaseCarousel.html)
-* [scale模式](http://blog.shellhong.com/effect/carousel/ScaleCarousel.html)
-* [parallel模式](http://blog.shellhong.com/effect/carousel/ParallelCarousel.html)
+* [base模式](http://blog.shellhong.com/demo/carousel/BaseCarousel.html)
+* [scale模式](http://blog.shellhong.com/demo/carousel/ScaleCarousel.html)
+* [parallel模式](http://blog.shellhong.com/demo/carousel/ParallelCarousel.html)
 
 ## 使用实例
 
@@ -25,7 +25,7 @@ var carouselObj = new BaseCarousel(document.querySelector('.sky-carousel'), [
   endAnimateTime: .2, // 动画耗时，默认为0.2s
   autoStepTime: 5000, // 自动轮播时间间隔，默认为5000ms,
   isSort: true, // 第一张图片第一次出现，依此排序
-  effectDistance: 30 // 移动多少px后松手，会自动滑动到下一个banner
+  demoDistance: 30 // 移动多少px后松手，会自动滑动到下一个banner
 });
 carouselObj.init();
 ```
