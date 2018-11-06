@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+  <style media="screen">
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .sky-carousel {
+      width: 100%;
+      height: 450px;
+      position: relative;
+      background: white;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    li{
+      box-sizing: border-box;
+      border: 1px solid blue;
+    }
+  </style>
+  <script type="text/javascript" src="../dist/ParallelCarousel.js"></script>
+</head>
+<body>
+		<div class="sky-carousel"></div>
+    <script type="text/javascript">
+      var carouselObj = new ParallelCarousel({
+        container: document.querySelector('.sky-carousel'),
+        data: [
+          './images/1.jpg',
+          './images/2.jpg',
+          './images/3.jpg',
+          './images/4.jpg',
+          './images/5.jpg',
+          './images/6.jpg',
+          './images/7.jpg'
+        ],
+        isSort: true,
+        auto: false,
+        liWidth: window.innerWidth * .7,
+        maxMarginL: 40,
+        marginR: 15
+      })
+      carouselObj.init()
+    </script>
+</body>
+</html>

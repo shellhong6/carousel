@@ -2,18 +2,17 @@
 
 > 每个元素设置data-index属性，放置了其对应的位置下标（从0开始）
 
-## 支持四种模式
+## 支持三种模式
 
-* [base模式](http://blog.shellhong.com/effect/carousel/index-base.html)
-* [scale模式](http://blog.shellhong.com/effect/carousel/index-scale.html)
-* [parallel模式](http://blog.shellhong.com/effect/carousel/index-parallel.html)
-* [parallel-simple模式](http://blog.shellhong.com/effect/carousel/index-parallel-simple.html)
+* [base模式](http://blog.shellhong.com/effect/carousel/BaseCarousel.html)
+* [scale模式](http://blog.shellhong.com/effect/carousel/ScaleCarousel.html)
+* [parallel模式](http://blog.shellhong.com/effect/carousel/ParallelCarousel.html)
 
 ## 使用实例
 
 ### base模式
 ```js
-carousel.init(document.querySelector('.sky-carousel'), [
+var carouselObj = new BaseCarousel(document.querySelector('.sky-carousel'), [
   './images/1.jpg',
   './images/2.jpg',
   './images/3.jpg',
@@ -22,15 +21,17 @@ carousel.init(document.querySelector('.sky-carousel'), [
   './images/6.jpg',
   './images/7.jpg'
 ], {
-  isAutoCarousel: true, //是否自动轮播，默认为false
-  animateTime: .2, //动画耗时，默认为0.2s
-  autoCarouselTime: 5000, //自动轮播时间间隔，默认为5000ms,
-  isSort: true //第一张图片第一次出现，依此排序
+  auto: true, // 是否自动轮播，默认为false
+  endAnimateTime: .2, // 动画耗时，默认为0.2s
+  autoStepTime: 5000, // 自动轮播时间间隔，默认为5000ms,
+  isSort: true, // 第一张图片第一次出现，依此排序
+  effectDistance: 30 // 移动多少px后松手，会自动滑动到下一个banner
 });
+carouselObj.init();
 ```
 ### scale模式
 ```js
-carousel.init(document.querySelector('.sky-carousel'), [
+var carouselObj = new ScaleCarousel(document.querySelector('.sky-carousel'), [
   './images/1.jpg',
   './images/2.jpg',
   './images/3.jpg',
@@ -39,18 +40,18 @@ carousel.init(document.querySelector('.sky-carousel'), [
   './images/6.jpg',
   './images/7.jpg'
 ], {
-  type: 'scale',
-  gap: '10%', //图片与容器左右两边的距离，可为数字（像素值）或字符串（百分比，相对于容器宽度）
-  rate: .8, //缩放比例
-  isAutoCarousel: true //是否自动轮播，默认为false
+  rate: .8, // 缩小比例
+  maxRate: 1, // 放大比例，默认为1
+  liWidth: window.innerWidth * .8 // 每个banner的宽度
 });
+carouselObj.init();
 ```
 
-![scale模式](./src/images/scale.png)
+![scale模式](./doc/1.png)
 
 ### parallel模式
 ```js
-carousel.init(document.querySelector('.sky-carousel'), [
+var carouselObj = new ParallelCarousel(document.querySelector('.sky-carousel'), [
   './images/1.jpg',
   './images/2.jpg',
   './images/3.jpg',
@@ -59,39 +60,27 @@ carousel.init(document.querySelector('.sky-carousel'), [
   './images/6.jpg',
   './images/7.jpg'
 ], {
-  type: 'parallel', // Flyme 7 图片轮播复杂模式
-  width: '70%', //图片宽度，可为数字（像素值）或字符串（百分比，相对于容器宽度）
-  marginR: 10, //图片彼此间的距离，可为数字（像素值）或字符串（百分比，相对于容器宽度）
-  animateTime: .2, //动画时间
-  startX: 30, // 第一张图片的起始位置
-  dragHolder: 120, // 反弹距离
-  effectDistance: 20 // 能切换到下个图片的拖拽生效距离
+  isSort: true,
+  auto: false,
+  liWidth: window.innerWidth * .7,
+  maxMarginL: 40, // banner间，较大的那个缝隙，出现在左边最开始位置
+  marginR: 15 // banner间，较小的那个缝隙
 });
+carouselObj.init();
 ```
 
-![parallel模式](./src/images/parallel.png)
+![parallel模式](./doc/2.png)
 
-### parallel-simple模式
-```js
-carousel.init(document.querySelector('.sky-carousel'), [
-  './images/1.jpg',
-  './images/2.jpg',
-  './images/3.jpg',
-  './images/4.jpg',
-  './images/5.jpg',
-  './images/6.jpg',
-  './images/7.jpg'
-], {
-  type: 'parallel-simple', // Flyme 7 图片轮播复杂模式
-  width: '70%', //图片宽度，可为数字（像素值）或字符串（百分比，相对于容器宽度）
-  marginR: 10, //图片彼此间的距离，可为数字（像素值）或字符串（百分比，相对于容器宽度）
-  isAutoCarousel: true, //是否自动轮播，默认为false
-  animateTime: .2, //动画时间
-  autoCarouselTime: 5000, //自动轮播时间间隔
-  startX: 30, // 第一张图片的起始位置
-  effectDistance: 20 // 能切换到下个图片的拖拽生效距离
-});
-```
+## 拓展
+
+这三种模式中，`BaseCarousel`是另外两种模式的基础，也可以说是一切拓展模式的基础。其他类型的banner轮播图模式，应该都是继承于`BaseCarousel`。`BaseCarousel`负责主体逻辑和整体架构，支撑两种方式的基于它的定制化开发
+
+* 重写（参数无法覆盖全部情况，重写方法更加灵活，能覆盖更多的情况和定制化需求）
+* 新增（增加新的方法、传参等，依次拓展新的功能）
+
+新的功能需求，不一定只能继承于`BaseCarousel`，也可以继承其他拓展出来的，功能更加完善和接近的拓展类。
+
+![模式](./doc/3.png)
 
 ##  相关的博客文章
 
